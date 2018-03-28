@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -41,8 +44,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ems="10"
+            android:maxLength="12"
             android:hint="Mobile"
-            android:inputType="textPersonName" />
+            android:inputType="number" />
         <EditText
             android:id="@+id/pass"
             android:layout_width="match_parent"
@@ -65,3 +69,4 @@
             android:textColor="@android:color/white" />
     </LinearLayout>
 </LinearLayout>
+</layout>

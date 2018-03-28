@@ -15,18 +15,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".BaseActivity" />
         <activity android:name=".RegisterHotel" />
         <activity android:name=".UserRegister" />
         <activity android:name=".UserDashBoard" />
         <activity android:name=".DeliveryItem" />
-        <activity android:name=".HotelOrders"></activity>
+        <activity android:name=".HotelOrders" />
+        <activity android:name=".Splash_Screen"
+            android:theme="@style/AppTheme.NoActionBar">
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>

@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.foodexpress.app.adapter.StudentAdapter;
 import com.foodexpress.app.databinding.ActivityRegisterHotelBinding;
 import com.foodexpress.app.helper.SharedHelper;
-import com.foodexpress.app.model.AddSuccess;
 import com.foodexpress.app.service.RestBuilderPro;
 
 import org.json.JSONArray;
@@ -25,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -118,16 +118,27 @@ public class RegisterHotel extends BaseActivity {
                     hashMap.put("hotel_item", jsonArray.toString());
                     hashMap.put("hotel_pass", pass);
 
-                    RestBuilderPro.getService().hotelreg(hashMap).enqueue(new Callback<AddSuccess>() {
+                    RestBuilderPro.getService().hotelreg(hashMap).enqueue(new Callback<ResponseBody>() {
                         @Override
-                        public void onResponse(Call<AddSuccess> call, Response<AddSuccess> response) {
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                             if (response.isSuccessful()) {
                                 dialog.dismiss();
-                                AddSuccess data = response.body();
-                                if (data.getSuccess() == 1) {
-                                    try {
-                                        JSONArray jsonObject = new JSONArray(data.getData());
-                                        JSONObject jsonObject1 = jsonObject.getJSONObject(0);
+
+
+                                try {
+                                    String respo = response.body().string();
+
+                                    JSONObject jsonObject = new JSONObject(respo);
+                                    int succ = jsonObject.getInt("success");
+
+
+                                    if (succ == 1)
+
+                                    {
+                                        JSONArray jsonA = jsonObject.getJSONArray("data");
+                                        JSONObject jsonObject1 = null;
+
+                                        jsonObject1 = jsonA.getJSONObject(0);
 
                                         String hotelid = jsonObject1.getString("hotel_id");
                                         String hotelname = jsonObject1.getString("hotel_name");
@@ -135,31 +146,32 @@ public class RegisterHotel extends BaseActivity {
                                         String hotelitems = jsonObject1.getString("hotel_items");
                                         SharedHelper sharedHelper = new SharedHelper(RegisterHotel.this);
                                         sharedHelper.setHotelDetails(hotelid, hotelname, hotelemail, hotelitems);
+                                        sharedHelper.setLoginCheck(true);
+                                        sharedHelper.setRegType("hotel");
 
 
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
+                                        SnakBarCallback("Success", new CallbackSnak() {
+                                            @Override
+                                            public void back() {
+
+                                                startActivity(new Intent(RegisterHotel.this, HotelOrders.class));
+                                                finish();
+                                            }
+                                        });
+
+                                    } else {
+                                        SnakBar("email id already exists");
+
                                     }
+                                }catch (Exception e){e.printStackTrace();}
 
 
-                                    SnakBarCallback("Success", new CallbackSnak() {
-                                        @Override
-                                        public void back() {
 
-                                            startActivity(new Intent(RegisterHotel.this, HotelOrders.class));
-                                            finish();
-                                        }
-                                    });
-
-                                } else {
-                                    SnakBar("email id already exists");
-
-                                }
                             }
                         }
 
                         @Override
-                        public void onFailure(Call<AddSuccess> call, Throwable t) {
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
                             dialog.dismiss();
 
                             SnakBar("Server could not connect");

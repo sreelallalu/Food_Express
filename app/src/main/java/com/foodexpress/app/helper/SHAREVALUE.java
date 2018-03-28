@@ -24,6 +24,11 @@ public interface SHAREVALUE {
     String hotel_email="hotel_email";
     String hotel_items="hotel_items";
 
+    String user_id="user_id";
+    String user_name="user_name";
+    String user_email="user_email";
+    String user_mob="user_mob";
+
 
     String CATG_ID="catgID";
 }

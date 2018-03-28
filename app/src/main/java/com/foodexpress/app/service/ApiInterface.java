@@ -1,9 +1,8 @@
 package com.foodexpress.app.service;
 
-import com.foodexpress.app.model.AddSuccess;
-
 import java.util.HashMap;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -17,12 +16,16 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("login.php")
-    Call<AddSuccess> login
+    Call<ResponseBody> login
             (@FieldMap HashMap<String, String> hashMap);
 
     @FormUrlEncoded
     @POST("hotelregister.php")
-    Call<AddSuccess> hotelreg
+    Call<ResponseBody> hotelreg
+            (@FieldMap HashMap<String, String> hashMap);
+    @FormUrlEncoded
+    @POST("userreg.php")
+    Call<ResponseBody> userreg
             (@FieldMap HashMap<String, String> hashMap);
 
   /*  @FormUrlEncoded

@@ -3,6 +3,8 @@ package com.foodexpress.app.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.json.JSONArray;
+
 /**
  * Created by sreelal on 27/3/18.
  */
@@ -15,7 +17,7 @@ public class AddSuccess {
 private Integer success;
 @SerializedName("data")
 @Expose
-private String data;
+private JSONArray data;
 @SerializedName("message")
 @Expose
 private String message;
@@ -28,11 +30,11 @@ public void setSuccess(Integer success) {
 this.success = success;
 }
 
-public String getData() {
+public JSONArray getData() {
 return data;
 }
 
-public void setData(String data) {
+public void setData(JSONArray data) {
 this.data = data;
 }
 

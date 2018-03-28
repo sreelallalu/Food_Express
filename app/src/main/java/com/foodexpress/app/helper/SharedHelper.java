@@ -20,12 +20,7 @@ public class SharedHelper {
     }
 
 
-    public void setUserDetails(String userDetails) {
 
-
-        mSharedPreferences.edit().putString(SHAREVALUE.User_detail, userDetails).apply();
-
-    }
 
 
     public void setHotelDetails(String id,String name,String email,String items) {
@@ -33,6 +28,13 @@ public class SharedHelper {
         mSharedPreferences.edit().putString(SHAREVALUE.hotel_name, name).apply();
         mSharedPreferences.edit().putString(SHAREVALUE.hotel_email, email).apply();
         mSharedPreferences.edit().putString(SHAREVALUE.hotel_items, items).apply();
+
+
+    }public void setUserDetails(String id,String name,String email,String mobile) {
+        mSharedPreferences.edit().putString(SHAREVALUE.user_id, id).apply();
+        mSharedPreferences.edit().putString(SHAREVALUE.user_name, name).apply();
+        mSharedPreferences.edit().putString(SHAREVALUE.user_email, email).apply();
+        mSharedPreferences.edit().putString(SHAREVALUE.user_mob, mobile).apply();
 
 
     }
@@ -45,6 +47,15 @@ public class SharedHelper {
         return mSharedPreferences.getString(SHAREVALUE.hotel_email, "");
     }public String getHotelitems() {
         return mSharedPreferences.getString(SHAREVALUE.hotel_items, "");
+    }
+    public String getUsername() {
+        return mSharedPreferences.getString(SHAREVALUE.user_name, "");
+    }public String getUserid() {
+        return mSharedPreferences.getString(SHAREVALUE.user_id, "");
+    }public String getUseremail() {
+        return mSharedPreferences.getString(SHAREVALUE.user_email, "");
+    }public String getUsermob() {
+        return mSharedPreferences.getString(SHAREVALUE.user_mob, "");
     }
 
 
