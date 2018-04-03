@@ -6,6 +6,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
@@ -23,9 +24,28 @@ public interface ApiInterface {
     @POST("hotelregister.php")
     Call<ResponseBody> hotelreg
             (@FieldMap HashMap<String, String> hashMap);
+
     @FormUrlEncoded
     @POST("userreg.php")
     Call<ResponseBody> userreg
+            (@FieldMap HashMap<String, String> hashMap);
+
+    @FormUrlEncoded
+    @POST("hotel_order.php")
+    Call<ResponseBody> odering
+            (@FieldMap HashMap<String, String> hashMap);
+
+    @FormUrlEncoded
+    @POST("oder_list.php")
+    Call<ResponseBody> order_list
+            (@FieldMap HashMap<String, String> hashMap);
+
+    @GET("hotellist.php")
+    Call<ResponseBody> hotellist
+            ();
+
+    @GET("cancel_list.php")
+    Call<ResponseBody> cancelist
             (@FieldMap HashMap<String, String> hashMap);
 
   /*  @FormUrlEncoded

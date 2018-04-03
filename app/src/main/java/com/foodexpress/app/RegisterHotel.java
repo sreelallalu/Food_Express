@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.foodexpress.app.adapter.StudentAdapter;
 import com.foodexpress.app.databinding.ActivityRegisterHotelBinding;
 import com.foodexpress.app.helper.SharedHelper;
+import com.foodexpress.app.model.ItemModel;
 import com.foodexpress.app.service.RestBuilderPro;
 
 import org.json.JSONArray;
@@ -32,7 +33,7 @@ import retrofit2.Response;
 public class RegisterHotel extends BaseActivity {
 
     private ActivityRegisterHotelBinding binding;
-    private List<String> item_list;
+    private List<ItemModel> item_list;
     private StudentAdapter adapter;
 
     @Override
@@ -52,11 +53,13 @@ public class RegisterHotel extends BaseActivity {
             @Override
             public void onClick(View v) {
                 String itemorder = binding.itemEdit.getText().toString().trim();
-                if (itemorder.isEmpty()) {
+                String rupees = binding.itemRupees.getText().toString().trim();
+                if (itemorder.isEmpty()||rupees.isEmpty()) {
                     return;
                 } else {
                     binding.itemEdit.setText("");
-                    item_list.add(itemorder);
+                    binding.itemRupees.setText("");
+                    item_list.add(new ItemModel(itemorder,rupees));
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -74,11 +77,12 @@ public class RegisterHotel extends BaseActivity {
                 if (hotelanme.isEmpty()) {
                     binding.hotelName.setError("Invalid hotel name");
                     check = false;
-                }if (pass.isEmpty()) {
+                }
+                if (pass.isEmpty()) {
                     binding.passId.setError("Invalid password");
                     check = false;
                 }
-                if (email.isEmpty()|| !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
 
                     binding.emailId.setError("Invalid email id");
 
@@ -102,7 +106,9 @@ public class RegisterHotel extends BaseActivity {
                         for (int i = 0; i < item_list.size(); i++) {
                             JSONObject jsonObject = new JSONObject();
 
-                            jsonObject.put("item", item_list.get(i).trim());
+                            jsonObject.put("item", item_list.get(i).getName());
+                            jsonObject.put("rupee", item_list.get(i).getRupees());
+
                             jsonArray.put(jsonObject);
 
 
@@ -154,7 +160,7 @@ public class RegisterHotel extends BaseActivity {
                                             @Override
                                             public void back() {
 
-                                                startActivity(new Intent(RegisterHotel.this, HotelOrders.class));
+                                                startActivity(new Intent(RegisterHotel.this, HotelOrders.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                                                 finish();
                                             }
                                         });
@@ -163,8 +169,9 @@ public class RegisterHotel extends BaseActivity {
                                         SnakBar("email id already exists");
 
                                     }
-                                }catch (Exception e){e.printStackTrace();}
-
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
 
 
                             }

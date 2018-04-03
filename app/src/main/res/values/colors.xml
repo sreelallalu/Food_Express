@@ -13,5 +13,6 @@
     <color name="white">#fff</color>
     <color name="green">#8BC34A</color>
     <color name="topblue">#767fff</color>
+    <color name="black">#000</color>
 
 </resources>

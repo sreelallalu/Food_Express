@@ -3,6 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/cancel"
+        android:title="Cancel Order"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/sign_out"
         android:title="Sign Out"
         app:showAsAction="never" />

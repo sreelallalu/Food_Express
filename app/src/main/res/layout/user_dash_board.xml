@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -28,12 +30,12 @@
             android:layout_height="40dp">
 
             <Spinner
-                android:id="@+id/branch_spinner"
+                android:id="@+id/hotel_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="40dp" />
 
             <ProgressBar
-                android:id="@+id/branchLoading"
+                android:id="@+id/hotelLoading"
                 style="?android:attr/progressBarStyleSmall"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
@@ -58,12 +60,12 @@
             android:layout_height="40dp">
 
             <Spinner
-                android:id="@+id/semester_spinner"
+                android:id="@+id/items_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="40dp" />
 
             <ProgressBar
-                android:id="@+id/semLoading"
+                android:id="@+id/itemsLoading"
                 style="?android:attr/progressBarStyleSmall"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
@@ -88,3 +90,4 @@
     </LinearLayout>
 
 </LinearLayout>
+</layout>

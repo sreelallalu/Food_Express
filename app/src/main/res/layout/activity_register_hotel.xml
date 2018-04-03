@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,89 +8,115 @@
     android:layout_height="match_parent"
     tools:context="com.foodexpress.app.RegisterHotel">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_marginLeft="20dp"
+           android:layout_marginRight="20dp"
+           android:layout_marginTop="20dp"
+           android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/hotel_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Hotel name"
-            android:inputType="textPersonName" />
+           <EditText
+               android:id="@+id/hotel_name"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:ems="10"
+               android:hint="Hotel name"
+               android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/email_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textPersonName" />
+           <EditText
+               android:id="@+id/email_id"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:ems="10"
+               android:hint="Email"
+               android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/pass_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:hint="password"
-            android:inputType="textPassword" />
+           <EditText
+               android:id="@+id/pass_id"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:ems="10"
+               android:hint="password"
+               android:inputType="textPassword" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/item_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Item"
-                android:inputType="textPersonName" />
-
-            <Button
-                android:id="@+id/addbutton"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:text="Add"
-                android:textColor="@color/white" />
-
-        </LinearLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/item_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
+               <EditText
+                   android:id="@+id/item_edit"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginRight="5dp"
+                   android:layout_weight="1"
+                   android:ems="10"
+                   android:hint="Item"
+                   android:inputType="textPersonName" />
+               <EditText
+                   android:id="@+id/item_rupees"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginRight="5dp"
+                   android:layout_weight="2"
+                   android:ems="10"
+                   android:hint="Rupees"
+                   android:inputType="numberDecimal" />
 
 
-        <Button
-            android:textColor="@android:color/white"
-            android:text="Register"
-            android:background="@color/colorPrimaryDark"
-            android:id="@+id/register"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="25dp"
-            android:elevation="3dp"
-            />
+           </LinearLayout>
+           <Button
+               android:layout_marginTop="10dp"
+               android:layout_gravity="right"
+               android:id="@+id/addbutton"
+               android:layout_width="80dp"
+               android:layout_height="wrap_content"
+               android:background="@color/colorPrimary"
+               android:text="Add"
+               android:textColor="@color/white" />
 
-    </LinearLayout>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="100dp">
+               <ScrollView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content">
+                       <android.support.v7.widget.RecyclerView
+                           android:id="@+id/item_recycler"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginTop="10dp" />
+                   </LinearLayout>
+               </ScrollView>
 
 
-</LinearLayout>
+           </LinearLayout>
+
+
+           <Button
+               android:textColor="@android:color/white"
+               android:text="Register"
+               android:background="@color/colorPrimaryDark"
+               android:id="@+id/register"
+               android:layout_width="match_parent"
+               android:layout_height="40dp"
+               android:layout_centerHorizontal="true"
+               android:layout_marginLeft="20dp"
+               android:layout_marginRight="20dp"
+               android:layout_marginTop="25dp"
+               android:elevation="3dp"
+               />
+
+       </LinearLayout>
+
+
+
+</RelativeLayout>
 </layout>

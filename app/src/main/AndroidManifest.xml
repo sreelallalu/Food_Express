@@ -14,25 +14,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
-        </activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".BaseActivity" />
         <activity android:name=".RegisterHotel" />
         <activity android:name=".UserRegister" />
         <activity android:name=".UserDashBoard" />
         <activity android:name=".DeliveryItem" />
         <activity android:name=".HotelOrders" />
-        <activity android:name=".Splash_Screen"
+        <activity
+            android:name=".Splash_Screen"
             android:theme="@style/AppTheme.NoActionBar">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".OrderAddress" />
+        <activity android:name=".CancelOrder"></activity>
     </application>
 
 </manifest>

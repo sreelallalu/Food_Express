@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.foodexpress.app.CancelOrder;
 import com.foodexpress.app.R;
-import com.foodexpress.app.model.ItemModel;
 
 import java.util.List;
 
@@ -20,15 +20,15 @@ import java.util.List;
 
 
 
-public class StudentAdapter
-        extends RecyclerView.Adapter<StudentAdapter.MyViewHolder>
+public class CancelOdersAdapter
+        extends RecyclerView.Adapter<CancelOdersAdapter.MyViewHolder>
 {
-    private List<ItemModel> arraylist;
+    private List<CancelOrder> arraylist;
 
     Context context;
     AlertDialog mDialog;
 
-    public StudentAdapter(List<ItemModel> paramList, Context context)
+    public CancelOdersAdapter(List<CancelOrder> paramList, Context context)
     {
         this.arraylist = paramList;
 
@@ -42,8 +42,10 @@ public class StudentAdapter
 
     public void onBindViewHolder(MyViewHolder paramMyViewHolder, final int paramInt)
     {
-        final String data=arraylist.get(paramInt).getName();
-        paramMyViewHolder.name.setText(data);
+        CancelOrder data=arraylist.get(paramInt);
+
+
+        /*paramMyViewHolder.item_cl.setText(data);
         paramMyViewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +53,7 @@ public class StudentAdapter
                 notifyDataSetChanged();
             }
         });
-
+*/
 
 
 
@@ -60,13 +62,16 @@ public class StudentAdapter
 
     public MyViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
     {
-        return new MyViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(R.layout.studnet_singlelist, paramViewGroup, false));
+        return new MyViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(R.layout.temp, paramViewGroup, false));
     }
 
     public class MyViewHolder
             extends RecyclerView.ViewHolder
     {
-        public TextView name;
+        public TextView item_cl;
+        public TextView date_cl;
+        public TextView fee_cl;
+        public TextView cancel_cl;
          public RelativeLayout layout;
 
 
@@ -74,8 +79,10 @@ public class StudentAdapter
         public MyViewHolder(View paramView)
         {
             super(paramView);
-            this.name = ((TextView)paramView.findViewById(R.id.name));
-            this.layout = ((RelativeLayout)paramView.findViewById(R.id.delete_oldpass));
+            this.item_cl = ((TextView)paramView.findViewById(R.id.item_cl));
+            this.date_cl = ((TextView)paramView.findViewById(R.id.date_cl));
+            this.fee_cl = ((TextView)paramView.findViewById(R.id.fee_cl));
+            this.cancel_cl = ((TextView)paramView.findViewById(R.id.cancel_cl));
 
 
 
