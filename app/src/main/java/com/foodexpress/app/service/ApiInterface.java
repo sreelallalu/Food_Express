@@ -44,8 +44,14 @@ public interface ApiInterface {
     Call<ResponseBody> hotellist
             ();
 
-    @GET("cancel_list.php")
+    @FormUrlEncoded
+    @POST ("cancel_list.php")
     Call<ResponseBody> cancelist
+            (@FieldMap HashMap<String, String> hashMap);
+
+    @FormUrlEncoded
+    @POST ("cancel_order.php")
+    Call<ResponseBody> canceorder
             (@FieldMap HashMap<String, String> hashMap);
 
   /*  @FormUrlEncoded

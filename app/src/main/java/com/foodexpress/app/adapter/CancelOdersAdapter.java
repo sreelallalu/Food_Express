@@ -1,7 +1,6 @@
 package com.foodexpress.app.adapter;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,7 @@ import android.widget.TextView;
 
 import com.foodexpress.app.CancelOrder;
 import com.foodexpress.app.R;
+import com.foodexpress.app.model.OrderCancel;
 
 import java.util.List;
 
@@ -23,12 +23,12 @@ import java.util.List;
 public class CancelOdersAdapter
         extends RecyclerView.Adapter<CancelOdersAdapter.MyViewHolder>
 {
-    private List<CancelOrder> arraylist;
+    private List<OrderCancel> arraylist;
 
-    Context context;
+    CancelOrder context;
     AlertDialog mDialog;
 
-    public CancelOdersAdapter(List<CancelOrder> paramList, Context context)
+    public CancelOdersAdapter(List<OrderCancel> paramList, CancelOrder context)
     {
         this.arraylist = paramList;
 
@@ -40,9 +40,18 @@ public class CancelOdersAdapter
         return this.arraylist.size();
     }
 
-    public void onBindViewHolder(MyViewHolder paramMyViewHolder, final int paramInt)
+    public void onBindViewHolder(MyViewHolder holder, final int paramInt)
     {
-        CancelOrder data=arraylist.get(paramInt);
+        final OrderCancel data=arraylist.get(paramInt);
+        holder.item_cl.setText(data.getItem());
+        holder.date_cl.setText(data.getOr_date());
+        holder.fee_cl.setText(data.getRupees());
+        holder.cancel_cl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.cancelItem(data.getOr_id());
+            }
+        });
 
 
         /*paramMyViewHolder.item_cl.setText(data);
@@ -54,7 +63,6 @@ public class CancelOdersAdapter
             }
         });
 */
-
 
 
 
