@@ -216,6 +216,8 @@ public class DeliveryItem extends BaseActivity {
                     dialog.setMessage("Loading...");
                     dialog.show();
 
+                    Log.e("hashmap", String.valueOf(new JSONObject(hashMap)));
+
                     RestBuilderPro.getService().odering(hashMap).enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
