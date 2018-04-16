@@ -71,11 +71,12 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:textSize="12sp"
                         android:id="@+id/cancel_cl"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="TextView"
+                        android:text="Cancel Order"
                         android:textColor="@color/red_error" />
                 </LinearLayout>
             </LinearLayout>
